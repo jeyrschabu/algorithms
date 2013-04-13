@@ -12,6 +12,15 @@ public class ReverseLinkedList {
 		
 		return r;
 	}
+	public static void main(String [] args){
+		Node n = new Node(1);
+		n.next = new Node(2);
+		n.next.next = new Node(3);
+		n.next.next.next = new Node(4);
+		
+		System.out.println("Before : => " + n);
+		System.out.println("After : => " + reverseLinkedList(n));
+	}
 }
 class Node{
 	int data;
@@ -24,9 +33,9 @@ class Node{
 		String result = "";
 		Node current = this;
 		while(current != null){
-			result +=data+"->";
+			result +=current.data+"->";
 			current = current.next; 
 		}
-		return result;
+		return result+"tail";
 	}
 }
