@@ -8,10 +8,10 @@ public class CountNumberFrequency {
 	public static void main(String [] args){
 		int x[] = new int[]{1,2,3,4,4,4,5};
 		int n = 4;
-		System.out.println(CountNumberFrequency(n,x, 0, x.length-1));
+		System.out.println(countNumberFrequency(n,x, 0, x.length-1));
 	}
 	//use bynary search, potentially O(nlgn)
-	public static int CountNumberFrequency(int n, int [] x, int start, int end){
+	public static int countNumberFrequency(int n, int [] x, int start, int end){
 		if(end < start)return 0;
 		if(x[start] > n) return 0;
 		if(x[end] < n) return 0;
@@ -19,15 +19,15 @@ public class CountNumberFrequency {
 		if(x[start] == n && x[end] == n) return end - start + 1; //means all items are the same
 		int mid = (start + end)/2;
 		if(x[mid] == n)
-			return 1 + CountNumberFrequency(n, x, start, mid-1) + CountNumberFrequency(n, x, mid+1, end);
+			return 1 + countNumberFrequency(n, x, start, mid-1) + countNumberFrequency(n, x, mid+1, end);
 		else if(x[mid] > n)
-			return CountNumberFrequency(n, x, start, mid -1);
+			return countNumberFrequency(n, x, start, mid -1);
 		else
-			return CountNumberFrequency(n, x, mid+1, end);
+			return countNumberFrequency(n, x, mid+1, end);
 		
 	}
 	//iterative potentially O(n)
-	public static int CountNumberFrequency(int n, int []x){
+	public static int countNumberFrequency(int n, int []x){
 		int counter = 0;
 		for(int i=0; i < x.length; i++)
 			if(x[i] == n) counter++;
