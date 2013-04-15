@@ -13,6 +13,21 @@ public class CheckIfBST {
 		}
 		return false;
 	}
+	/**
+	 * NOT Tested. using an inorder traversal while checking
+	 * @param tree
+	 * @return
+	 */
+	public boolean checkIfBST(Tree tree){
+		if(tree == null) return true;
+		if(tree.left == null & tree.right == null) return true;
+		
+		boolean a = checkIfBST(tree.left);
+		if(tree.data < tree.left.data || tree.data < tree.left.data) return false;
+		boolean b = checkIfBST(tree.left);
+		
+		return a && b;
+	}
 }
 class Tree{
 	Tree left;
