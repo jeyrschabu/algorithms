@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -91,7 +92,8 @@ public class ProjectEuler {
 		
 		//int res = howManySundays();
 		//System.out.println("Result is => " + res);
-		howManySundays0();
+		//howManySundays0();
+		System.out.println(factorialDigitSum(100));
 	}
 
 	static void dfs(Node start, int maxCount, List<Node> visited){
@@ -447,52 +449,53 @@ public class ProjectEuler {
 		}
 		return count;
 	}
-	public static int howManySundays(){
-		int date = 1, month = 1, year = 1900, day = 1;
-		int sundays = 0;
-		int monthEnd = 0;
-		boolean theEnd = true;
-		boolean begin = true;
-		do{
-			if(begin){
-				System.out.println("Date => " + date +", month => " + month + ", year => " + year + ", day => "+day );
-				begin = false;
-			}
-			if(date % 7 == 0){
-				if(date == 1){
-					sundays++;
-				}
-				day = 0;//reset day
-			}
-			if(month == 9 || month == 4 || month == 6 || month == 11)
-				monthEnd = 30;
-			else if(month == 2){
-				monthEnd = 28;
-				if(year % 100 != 0){
-					if(year % 4 == 0)
-						monthEnd = 29;
-				}else{
-					if(year % 400 == 0)
-						monthEnd = 29;
-				}
-			}else{
-				monthEnd = 31;
-			}
-			if(date == monthEnd){
-				date = 0; //reset date
-				month++;
-			}
-			if(month > 12){
-				month = 1;//reset month
-				year++;
-			}
-			date++;
-			day++;
-			if(year == 2000 && date == 31 && month == 12)
-				theEnd = false;
-			System.out.println("Date => " + date +", month => " + month + ", year => " + year + ", day => "+day );
-		}while(theEnd);
+
+	public static int getLargestProductOfFiveDigit(BigInteger n){
+		int limit = 1000;
+		int [] digits = new int[limit];
+		BigInteger tmp = n;
 		
-		return sundays;
+		for(int i = 0; i < digits.length; i++){
+			digits[i]= tmp.remainder(new BigInteger("10")).intValue();
+			tmp = tmp.divide(new BigInteger("10"));
+			if(tmp == null)
+				break;
+		}
+		int [] prods = new int[limit];
+		for(int i = 0; i < digits.length; i++){
+			int key = digits[i];
+			int j = i + 4;
+			while(j > i && j <= digits.length - 1){
+				key = key * digits[j];
+				j--;
+			}
+			prods[i] = key;
+		}
+		Arrays.sort(prods);
+		return prods[prods.length - 1];
+	}
+	public static BigInteger factorial(int n){
+        BigInteger ret = BigInteger.ONE;
+        for (int i = 1; i <= n; ++i) ret = ret.multiply(BigInteger.valueOf(i));
+        return ret;
+	}
+	public static long factorialDigitSum(int i){
+		BigInteger f = factorial(i);
+		int len = f.toString().length();
+		int [] digits = new int[len];
+		BigInteger tmp = f;
+		for(int j = 0; j < digits.length; j++){
+			digits[j] = tmp.remainder(new BigInteger("10")).intValue();
+			tmp = tmp.divide(new BigInteger("10"));
+			if(tmp == null)
+				break;
+		}
+		
+		int total = 0;
+		for(int j = 0; j < digits.length; j++){
+			total += digits[j];
+		}
+		
+		return total;
 	}
 }
