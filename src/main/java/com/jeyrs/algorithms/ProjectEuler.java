@@ -211,6 +211,7 @@ public class ProjectEuler {
 		}
 		return factors;
 	}
+	
 	public static long countFactors(long m){
 		List<Long> factors = primeFactors(m);
 		Map<Long, Long> map = new HashMap<Long, Long>();
@@ -490,7 +491,6 @@ public class ProjectEuler {
 			if(tmp == null)
 				break;
 		}
-		
 		int total = 0;
 		for(int j = 0; j < digits.length; j++){
 			total += digits[j];
