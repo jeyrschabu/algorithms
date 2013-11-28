@@ -2,8 +2,7 @@ package com.jeyrs.algorithms;
 
 public class PrintAllSubsets {
 	public static void main(String [] args){
-		printAllSubsets(new int[]{1,2,3});
-		
+		printAllSubsets(new int[]{1,2,3});	
 	}
 	public static void printAllSubsets(int [] numbers){ 
 		int n = numbers.length;
