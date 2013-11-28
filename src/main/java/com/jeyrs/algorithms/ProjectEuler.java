@@ -93,7 +93,11 @@ public class ProjectEuler {
 		//int res = howManySundays();
 		//System.out.println("Result is => " + res);
 		//howManySundays0();
-		System.out.println(factorialDigitSum(100));
+		//System.out.println(factorialDigitSum(100));
+		
+		
+		System.out.println(getAmicableNumbersSum(1000));
+		
 	}
 
 	static void dfs(Node start, int maxCount, List<Node> visited){
@@ -199,6 +203,19 @@ public class ProjectEuler {
 		return false;
 	}
 	public static List<Long> primeFactors(long num){
+		long n = num;
+		List<Long> factors = new ArrayList<Long>();
+		for(long i = 2; i <= n/i; i++)
+			while(n % i == 0){
+				factors.add(i);
+				n /= i;
+			}
+		if(n > 1){
+			factors.add(n);
+		}
+		return factors;
+	}
+	public static List<Long> primeFactorsLessThan(long num){
 		long n = num;
 		List<Long> factors = new ArrayList<Long>();
 		for(long i = 2; i <= n/i; i++)
@@ -495,7 +512,42 @@ public class ProjectEuler {
 		for(int j = 0; j < digits.length; j++){
 			total += digits[j];
 		}
+		return total;
+	}
+	public static long sumOfDivisors(int n){
+		List<Long> factors = primeFactors(n);
+		Map<Long, Long> map = new HashMap<Long, Long>();
+		long count = 1;
+		for(long i : factors){
+			if(null != map.get(i)){				
+				count = map.get(i) + 1;
+			}
+			map.put(i, count);
+			count = 1;//reset to 1;s
+		}
+		long total = 1;
+		for(Map.Entry<Long, Long> me : map.entrySet()){
+			total *=(Math.pow(me.getKey(), me.getValue() + 1) - 1)/(me.getKey() - 1);
+		}
+		return total;
+	}
+	public static long getAmicableNumbersSum(int limit){
+		long buffer [] = new long[limit + 1];
+		long total = 0;
 		
+		for(int i = 0; i < limit; i++){
+			buffer[i] = sumOfDivisors(i);
+			buffer[i] -= i;
+			System.out.println("num => ["+i+"] divisors => ["+ (buffer[i])+"]");
+		}
+		int b = 0;
+		for(long a = 0; a < buffer.length; a = buffer[b++]){
+			//long tmp = buffer[(int)a];//b = d(a)
+			System.out.println("a =>" + a);
+			if(buffer[(int)a] == b){
+				total +=b + a;
+			}
+		}
 		return total;
 	}
 }
