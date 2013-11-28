@@ -215,9 +215,6 @@ public class ProjectEuler {
 		}
 		return factors;
 	}
-<<<<<<< HEAD
-	
-=======
 	public static List<Long> primeFactorsLessThan(long num){
 		long n = num;
 		List<Long> factors = new ArrayList<Long>();
@@ -231,7 +228,6 @@ public class ProjectEuler {
 		}
 		return factors;
 	}
->>>>>>> 730c63f21c0349ee1150535dcb7d45314669ba18
 	public static long countFactors(long m){
 		List<Long> factors = primeFactors(m);
 		Map<Long, Long> map = new HashMap<Long, Long>();
