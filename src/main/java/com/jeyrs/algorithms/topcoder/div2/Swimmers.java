@@ -1,5 +1,6 @@
 package com.jeyrs.algorithms.topcoder.div2;
 
+//SRM 172
 public class Swimmers{
 	public int[] getSwimTimes(int[] distances, int[] speeds, int current){
 		int times[] = new int[distances.length];

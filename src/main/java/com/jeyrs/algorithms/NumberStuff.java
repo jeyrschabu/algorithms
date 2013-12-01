@@ -11,6 +11,10 @@ import java.util.Map;
 
 public class NumberStuff {
 	public static void main(String [] args){
+		double d = 48;
+		double s = 65;
+		double r = d/s;
+		System.out.println("=>>>" + r * 100);
 		//System.out.println(getSumOfEvenFibonacci());
 		//long n = 600851475143L;
 		//getPrimeFactors(n);
