@@ -8,6 +8,9 @@ public class OnLineRank {
 		int scores [] = new int[]{6,9,8,15,7,12};
 		System.out.println(temp.calcRanks(k, scores));
 		System.out.println(temp.calcRanks0(k, scores));
+		
+		
+		
 	}
 	public int calcRanks(int k, int[] scores) {
 		int ans = 0;
