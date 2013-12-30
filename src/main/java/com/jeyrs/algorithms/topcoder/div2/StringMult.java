@@ -1,5 +1,6 @@
 package com.jeyrs.algorithms.topcoder.div2;
 
+//SRM 199
 import java.util.*;
 public class StringMult {
 	public String times(String sFactor, int iFactor) {
