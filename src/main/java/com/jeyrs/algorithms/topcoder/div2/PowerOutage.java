@@ -4,7 +4,6 @@ public class PowerOutage {
 	public int estimateTimeOut(int[] fromJunction, int[] toJunction, int[] ductLength) {
 		int matrix[][] = new int[50][50];
 		int ans = 0;
-		
 		for(int i=0; i < fromJunction.length; i++){
 			matrix[fromJunction[i]][toJunction[i]] = ductLength[i];
 			ans +=ductLength[i];
