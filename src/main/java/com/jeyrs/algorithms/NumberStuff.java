@@ -15,6 +15,13 @@ public class NumberStuff {
 		double s = 65;
 		double r = d/s;
 		System.out.println("=>>>" + r * 100);
+		
+		
+		int expMod = modularExponentiation(2, 2, 3);
+		
+		
+		System.out.println("DEBUG => " + expMod);
+		
 		//System.out.println(getSumOfEvenFibonacci());
 		//long n = 600851475143L;
 		//getPrimeFactors(n);
@@ -143,7 +150,7 @@ public class NumberStuff {
 		
 		if(memo[n])
 			return n;
-		int f = fib(n - 2) + fib(n - 1);
+		int f = fibDP(n - 2) + fibDP(n - 1);
 		memo[f] = true;
 		return f;
 	}
@@ -254,7 +261,7 @@ public class NumberStuff {
 		boolean [] primes = sieveOfEratosthenes(n);
 		int max = 0;
 	    for(int i=0; i<primes.length; i++){
-	        if(primes[i]==true && n % i == 0){
+	        if(primes[i] && n % i == 0){
 	            if(max < i)max = i;
 	        }
 	    }
@@ -275,13 +282,13 @@ public class NumberStuff {
 		}
 		//elimitation
 		for(int i=1; i < Math.sqrt(limit); i++)
-			if(primeCandidates[i] == true)
+			if(primeCandidates[i])
 				for(int j= i+i; j< primeCandidates.length; j=j+i)
 					primeCandidates[j] = false;
 		
 		long result = 0;
 		for(int i=0; i < primeCandidates.length; i++)
-			if(primeCandidates[i] == true)
+			if(primeCandidates[i])
 				result +=i;
 		return result;
 	}
@@ -370,6 +377,15 @@ public class NumberStuff {
 		}
 		Arrays.sort(prods);
 		return prods[prods.length - 1];
+	}
+	public static int modularExponentiation(int base, int exponent, int mod){
+		int res = 1;
+		while(exponent > 0){
+			if(exponent % 2 == 1) res = (res * base) % mod;  
+			exponent = exponent >> 1;
+			base = (base * base ) % mod;
+		}
+		return res;
 	}
 	private static boolean isPalindrome(int p) {
 		int[] a = new int[6];
