@@ -1,4 +1,4 @@
-package com.jeyrs.algorithms;
+package com.jeyrs.algorithms.datastructures;
 /**
  * given a list 1->2->3 , returns 3->2->1
  */
