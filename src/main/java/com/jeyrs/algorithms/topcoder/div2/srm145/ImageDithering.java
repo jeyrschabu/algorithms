@@ -1,6 +1,8 @@
 package com.jeyrs.algorithms.topcoder.div2.srm145;
 
 import java.util.*;
+
+//SRM 145 250
 public class ImageDithering {
 	public int count(String dithered, String[] screen) {
 		int count = 0;
