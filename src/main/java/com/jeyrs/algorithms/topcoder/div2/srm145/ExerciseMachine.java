@@ -1,4 +1,4 @@
-package com.jeyrs.algorithms.topcoder.div2;
+package com.jeyrs.algorithms.topcoder.div2.srm145;
 
 //SRM 145 500
 public class ExerciseMachine {
