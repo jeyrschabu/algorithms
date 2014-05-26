@@ -1,4 +1,4 @@
-package com.jeyrs.algorithms;
+package com.jeyrs.algorithms.sorting;
 
 public class MergeSortedArrays {
 	public static void mergeSortedArrays(int []a, int []b, int lastA, int lastB){

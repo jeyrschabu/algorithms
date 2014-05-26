@@ -1,4 +1,4 @@
-package com.jeyrs.algorithms;
+package com.jeyrs.algorithms.datastructures;
 /*
  * checks if a tree is a BST
  */

@@ -1,4 +1,4 @@
-package com.jeyrs.algorithms;
+package com.jeyrs.algorithms.sorting;
 
 import java.util.Arrays;
 

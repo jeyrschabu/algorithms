@@ -1,4 +1,4 @@
-package com.jeyrs.algorithms;
+package com.jeyrs.algorithms.sorting;
 
 /**
  * return the first index of a number in a sorted array allowing duplicates

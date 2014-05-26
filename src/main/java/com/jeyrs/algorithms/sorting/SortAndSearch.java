@@ -1,4 +1,4 @@
-package com.jeyrs.algorithms;
+package com.jeyrs.algorithms.sorting;
 
 public class SortAndSearch{
 	public static void main(String [] args){
