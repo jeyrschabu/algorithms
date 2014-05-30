@@ -1,4 +1,4 @@
-package com.jeyrs.algorithms;
+package com.jeyrs.algorithms.searching;
 
 public class SubstringSearch {
 	public static void main(String[] args){
