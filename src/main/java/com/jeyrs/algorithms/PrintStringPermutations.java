@@ -2,7 +2,7 @@ package com.jeyrs.algorithms;
 
 public class PrintStringPermutations {
 	public static void main(String [] args){
-		printStringPermutations("","ab");
+		printStringPermutations("","abc");
 	}
 	public static void printStringPermutations(String prefix, String str){
 		if(str.length() == 0) System.out.println(prefix);

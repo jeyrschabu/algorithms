@@ -28,4 +28,3 @@ public class StringsManipulation{
 		return true;
 	}
 }
-
