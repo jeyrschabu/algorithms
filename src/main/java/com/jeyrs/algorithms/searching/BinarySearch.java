@@ -5,7 +5,7 @@ public class BinarySearch {
 		if(low > high) return -1;
 		int middle = (high + low)/2;
 		
-		if(numbers[middle] == key) return numbers[middle];
+		if(numbers[middle] == key) return middle;
 		if(numbers[middle] > key) return binarySearch(numbers, key, low, middle -1);
 		else
 			return binarySearch(numbers, key, middle + 1, high);
