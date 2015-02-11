@@ -7,6 +7,7 @@ DATA STRUCTURE MANIFEST:
 	* boolean remove(Node head, Node previous, int data)
 	* Node reverse(Node node)
 	* Node printNthToLast(Node head, int n)
+	* Node reverseNthNodeFromLast(Node head, int n)
 	
 	
 class Node{
@@ -110,7 +111,7 @@ Node reverse(Node head){
 }
 [/REVERSE]
 
-[printNthToLast]
+[GET Nth TO LAST]
 //runner pointer method
 Node getNthToLast(Node head, int n){
 	Node p1 = head;
@@ -143,7 +144,41 @@ Node getNthToLast(Node head, int n){
 	
 	return current;
 }
-[/printNthToLast]
+[/GET Nth TO LAST]
 
+[REVERSE Nth TO LAST]
+Node reverseNthNodeFromLast(Node head, int n){
+	//first find the nth node (see getNthToLast)
+	int counter = 0, i = 0;
+	Node p1 = head, p2 = head;
+	while(counter++ < n){
+		if(p2 == null) return null;
+		p2 = p2.next;
+	}
+	while(p2 != null){
+		p1 = p1.next;
+		p2 = p2.next;
+		i++; //we care about this index
+	}
+	//p1 is the node we want
+	Node current = p1, previous = null, next;
+	
+	while(current != null){
+		next = current.next;
+		current.next = previous;
+		previous = current;
+		current = next;
+	}
+	current = previous;
+	if(i <= 0) return current;
+	
+	//attach the beginning of the lost to the reverse position
+	Node tmp = head;
+	while(--i > 0) tmp = tmp.next;
+	tmp.next = current;
+	
+	return head;
+}
+[/REVERSE Nth TO LAST]
 </LinkedList>
 
