@@ -1,0 +1,149 @@
+DATA STRUCTURE MANIFEST:
+
+<LinkedList>
+	* void add(Node head, int data)
+	* boolean search(Node head, int data)
+	* boolean search(Node head, int data)
+	* boolean remove(Node head, Node previous, int data)
+	* Node reverse(Node node)
+	* Node printNthToLast(Node head, int n)
+	
+	
+class Node{
+	int data;
+	Node next;
+	public Node(int data){
+		this.data = data;
+		this.next = null;
+	}
+}
+[ADD]
+//iterative
+void add(Node head, int data){
+	Node current = head;
+	if(current == null) {
+		current = new Node(data, null);
+		head = current;
+	}
+	while(current.next != null) current = current.next;
+	current.next = new Node(data, null);
+}
+//recursive
+void add(Node head, int data){
+	Node current = head;
+	if(current == null) {
+		current = new Node(data);
+		head = current;
+		return;
+	}
+	add(current.next, data);
+}
+[/ADD]
+
+[SEARCH]
+//Recursive
+boolean search(Node head, int data){
+	Node  current = head;
+	if(current == null) return false;
+	if(current.data = data) return true;
+	return search(current.next, data);
+}
+
+//Iterative
+boolean search(Node head, int data){
+	boolean found = false;
+	Node current = head;
+	
+	while(current != null && current.data != data){
+		current = current.next;
+	}
+	return current != null;
+}
+[/SEARCH]
+
+[REMOVE]
+//iterative
+boolean remove(Node head, int data){
+	if(head == null) return false;
+	if(head.data == data) head = head.next;
+	Node current = head;
+	Node previous = null;
+	
+	while(current != null && current.data != data){
+		previous = current;
+		current = current.next;
+	}
+	if(current == null) return false;
+	previous.next = current.next;
+}
+//recursive
+boolean remove(Node head, Node previous, int data){
+	Node current = head;
+	if(current == null) return false;
+	if(current.data == data ){
+		if(previous == null){
+			current = current.next;
+			head = current;
+			return true;
+		}else{
+			previous.next = current.next;
+		}
+	}
+	return remove(current, current.next, data);
+}
+[/REMOVE]
+
+[REVERSE]
+Node reverse(Node head){
+	Node current = head;
+	Node next;
+	Node previous = null;
+	
+	while(current != null){
+		next = current.next;
+		current.next = previous;
+		previous = current;
+		current = next;
+	}
+	head = previous;
+	return head;
+}
+[/REVERSE]
+
+[printNthToLast]
+//runner pointer method
+Node getNthToLast(Node head, int n){
+	Node p1 = head;
+	Node p2 = head;
+	int count = 0;
+	
+	while(count++ < n){
+		if(p2 == null) return;
+		p2 = p2.next;
+	}
+	while(p2 != null){
+		p1 = p1.next;
+		p2 = p2.next;
+	}
+	return p1;
+}
+//version 2: get the length of the list and get the offset with n
+Node getNthToLast(Node head, int n){
+	int len = 0;
+	Node current = head;
+	while(current != null){
+		++len;
+		current = current.next;
+	}
+	current = head;
+	if(len < n) return;
+	
+	int offSet = len - n + 1;
+	for(int i = 0; i < offSet; i++) current = current.next;
+	
+	return current;
+}
+[/printNthToLast]
+
+</LinkedList>
+
