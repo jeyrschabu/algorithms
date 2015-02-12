@@ -95,6 +95,7 @@ boolean remove(Node head, Node previous, int data){
 [/REMOVE]
 
 [REVERSE]
+//iterative
 Node reverse(Node head){
 	Node current = head;
 	Node next;
@@ -108,6 +109,15 @@ Node reverse(Node head){
 	}
 	head = previous;
 	return head;
+}
+
+//recursive
+Node reverse(Node head){
+	if( head == null || n.next == null) return n;
+	Node r = reverse(head.next);
+	head.next.next = head;
+	head.next = null;
+	return r;
 }
 
 [/REVERSE]
