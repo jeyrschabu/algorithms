@@ -109,6 +109,7 @@ Node reverse(Node head){
 	head = previous;
 	return head;
 }
+
 [/REVERSE]
 
 [GET Nth TO LAST]
