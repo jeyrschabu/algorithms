@@ -8,6 +8,8 @@ DATA STRUCTURE MANIFEST:
 	* Node reverse(Node node)
 	* Node printNthToLast(Node head, int n)
 	* Node reverseNthNodeFromLast(Node head, int n)
+	* Node mergeSortedList(Node l1, Node l2)
+	* Node removeDups(Node head)
 	
 	
 class Node{
@@ -113,7 +115,7 @@ Node reverse(Node head){
 
 //recursive
 Node reverse(Node head){
-	if( head == null || n.next == null) return n;
+	if( head == null || n.next == null) return head;
 	Node r = reverse(head.next);
 	head.next.next = head;
 	head.next = null;
@@ -191,5 +193,56 @@ Node reverseNthNodeFromLast(Node head, int n){
 	return head;
 }
 [/REVERSE Nth TO LAST]
+
+[MERGE TWO SORTED LIST]
+//iterative
+Node mergeSortedList(Node l1, Node l2){
+	Node p1 = l1, p2 = l2;
+	Node fakeHead = new Node(-1);
+	Node p = fakeHead;
+	
+	while(p1 != null && p2 != null){
+		if(p1.data <= p2.data){
+			p.next = p1;
+			p1 = p1.next;
+		}else{
+			p.next = p2;
+			p2 = p2.next;
+		}
+		p = p.next;
+	}
+	if(p1 != null) p.next = p1;
+	if(p2 != null) p.next = p2;
+	return fakeHead;
+}
+
+//recursive (more intuitive)
+Node mergeSortedList(Node l1, Node l2){
+	Node result = null;
+	if(l1 == null) return l2;
+	if(l2 == null) return l1;
+	
+	if(l1.data <= l2.data){
+		result = l1;
+		result.next = mergeSortedList(l1.next, l2);
+	}else{
+		result = l2;
+		result.next = mergeSortedList(l1, l2.next);
+	}
+	return result;
+}
+[/MERGE TWO SORTED LIST]
+
+[REMOVE DUPS]
+
+Node removeDups(Node head){
+	for(Node i = head, i != null ; i = i.next)
+		for(Node j = i.next; j != null; j = j.next)
+			if(i.data == j.data) i.next = j.next;
+	return head;
+}
+
+[/REMOVE DUPS]
+
 </LinkedList>
 
