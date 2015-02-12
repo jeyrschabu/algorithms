@@ -1,8 +1,7 @@
-DATA STRUCTURE MANIFEST:
+LinkedList Data Structures and Algorithms
 
-<LinkedList>
+SUMMARY:
 	* void add(Node head, int data)
-	* boolean search(Node head, int data)
 	* boolean search(Node head, int data)
 	* boolean remove(Node head, Node previous, int data)
 	* Node reverse(Node node)
@@ -10,6 +9,8 @@ DATA STRUCTURE MANIFEST:
 	* Node reverseNthNodeFromLast(Node head, int n)
 	* Node mergeSortedList(Node l1, Node l2)
 	* Node removeDups(Node head)
+	* boolean removeRestricted(Node node, int data)
+	* Node partitionList(Node head, int data)
 	
 	
 class Node{
@@ -234,15 +235,59 @@ Node mergeSortedList(Node l1, Node l2){
 [/MERGE TWO SORTED LIST]
 
 [REMOVE DUPS]
-
+Note: this can written using a while loop as well, the same approach can be used to detect dups. The method would return a boolean
 Node removeDups(Node head){
 	for(Node i = head, i != null ; i = i.next)
 		for(Node j = i.next; j != null; j = j.next)
 			if(i.data == j.data) i.next = j.next;
 	return head;
 }
-
 [/REMOVE DUPS]
 
-</LinkedList>
+[REMOVE RESTRICTED]
+Note: remove a node if only given access to that node
+assumption: this is not the last node in the list
+boolean removeRestricted(Node node, int data){
+	Node next = node.next;
+	n.data = next.data;
+	n.next = next.next;
+	return true;
+}
+[/REMOVE RESTRICTED]
+
+[PARTITION]
+Note: Create two seperate lists that are sorted around data
+Partition a list around x such that all nodes before are less than x and the ones after are greater than
+
+Node partitionList(Node head, int data){
+	Node l1 = new Node(-1);
+	Node l2 = new Node(-1);
+	
+	Node n = l1, m = l2;
+	Node current = head;
+	
+	while(current != null){
+		if(current.data <= data)
+			n.next = new Node(data);
+			n = n.next;
+		}else{
+			m.next = new Node(data);
+			m = m.next;
+		}
+		current = current.next;
+	}
+	//now we have m & n perfectly sorted with fakeheads. lets move them one step
+	n = n.next;
+	m = m.next;
+	
+	//get l1 which uses n as a runner to link to m
+	Node tmp = l1;
+	while(tmp.next != null) tmp = tmp.next;
+	tmp.next = m;
+	
+	return l1;
+}
+ 
+ [/PARTITION]
+
 
