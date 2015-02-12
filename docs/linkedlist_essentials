@@ -12,6 +12,7 @@ SUMMARY:
 	9. 	boolean removeRestricted(Node node, int data)
 	10. Node partitionList(Node head, int data)
 	11. Node sumTwoLists(Node first, Node last)
+	12. boolean hasCycle(Node head)
 	
 	
 class Node{
@@ -316,5 +317,26 @@ Node sumTwoLists(Node first, Node last){
 	return res;
 }
 [/SUM TWO LISTS]
+
+[HAS CYCLE]
+Note: using Floyd Cycle Detection Algorithm
+8 given a finite set S with elements xi...xn
+x0, x1 = f(x0), x2 = f(x1) ... xi = f(xi - 1)
+
+The sequence of iterated functions must use the same values twice
+
+Complexity : O(1) in space, O(n) in complexity
+
+hare-tortoise algorithm: hare is always  faster than the hare and will keep seeing the turtle if there is a cycle
+boolean hasCycle(Node head){
+	Node slow = head, fast = head;
+	while(slow != null && fast.next != null){
+		slow = slow.next;
+		fast = fast.next.next;
+		if(slow == fast) retur true;
+	}
+	return false;
+}
+[/HAS CYCLE]
 
 
