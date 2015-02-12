@@ -1,16 +1,17 @@
 LinkedList Data Structures and Algorithms
 
 SUMMARY:
-	* void add(Node head, int data)
-	* boolean search(Node head, int data)
-	* boolean remove(Node head, Node previous, int data)
-	* Node reverse(Node node)
-	* Node printNthToLast(Node head, int n)
-	* Node reverseNthNodeFromLast(Node head, int n)
-	* Node mergeSortedList(Node l1, Node l2)
-	* Node removeDups(Node head)
-	* boolean removeRestricted(Node node, int data)
-	* Node partitionList(Node head, int data)
+	1. 	void add(Node head, int data)
+	2. 	boolean search(Node head, int data)
+	3. 	boolean remove(Node head, Node previous, int data)
+	4. 	Node reverse(Node node)
+	5. 	Node printNthToLast(Node head, int n)
+	6. 	Node reverseNthNodeFromLast(Node head, int n)
+	7. 	Node mergeSortedList(Node l1, Node l2)
+	8. 	Node removeDups(Node head)
+	9. 	boolean removeRestricted(Node node, int data)
+	10. Node partitionList(Node head, int data)
+	11. Node sumTwoLists(Node first, Node last)
 	
 	
 class Node{
@@ -287,7 +288,33 @@ Node partitionList(Node head, int data){
 	
 	return l1;
 }
- 
- [/PARTITION]
+[/PARTITION]
+
+[SUM TWO LISTS]
+Node sumTwoLists(Node first, Node last){
+	Node res = null;
+	Node tmp, prev = null;
+	int carry = 0; sum;
+	
+	while(first != null && second != null){
+		int left = (first != null ) ? first.data : 0;
+		int right = (last != null ) ? last.data : 0;
+		sum  = left + right + carry;
+		carry = (sum >= 0) ? 1 : 0;
+		sum %=10;
+		tmp = new Node(sum);
+		if(res == null){
+			res = tmp;
+		}else{
+			prev.next = tmp;
+		}
+		prev = tmp;
+		if(first != null) first = first.next;
+		if(last != null) last = last.next;
+	}
+	if(carry > 0) tmp.next = new Node(carry);
+	return res;
+}
+[/SUM TWO LISTS]
 
 
