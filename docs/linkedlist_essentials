@@ -13,6 +13,8 @@ SUMMARY:
 	10. Node partitionList(Node head, int data)
 	11. Node sumTwoLists(Node first, Node last)
 	12. boolean hasCycle(Node head)
+	13. Node firstNodeInLoop(Node head)
+	14. boolean isPalindrome(Node head)
 	
 	
 class Node{
@@ -328,15 +330,85 @@ The sequence of iterated functions must use the same values twice
 Complexity : O(1) in space, O(n) in complexity
 
 hare-tortoise algorithm: hare is always  faster than the hare and will keep seeing the turtle if there is a cycle
+
 boolean hasCycle(Node head){
 	Node slow = head, fast = head;
 	while(slow != null && fast.next != null){
 		slow = slow.next;
 		fast = fast.next.next;
-		if(slow == fast) retur true;
+		if(slow == fast) return true;
 	}
 	return false;
 }
 [/HAS CYCLE]
+
+[FIRST NODE IN LOOP]
+Note : uses Floyd cycle detection algorithm, then advances the nodes correctly to detect the first node in the loop
+returns null if there are no loops
+
+Node firstNodeInLoop(Node head){
+	Node slow = head, fast = head;
+	while(fast != null && fast.next != null){
+		slow = slow.next;
+		fast = fast.next.next;
+		if(slow == fast) break;
+	}
+	if(fast == null || fast.next == null) return null;
+	slow = head;
+	while(slow != fast){
+		slow = slow.next;
+		fast = fast.next;
+	}
+	return fast;
+}
+[/FIRST NODE IN LOOP]
+
+[PALINDROME]
+Note: Solution #1 uses a stack as a buffer O(1) space, O(n) Complexity. Uses property of a stack: elements get popped up in reverse order from how they were inserted
+boolean isPalindrome(Node head){
+	Stack<Integer> stack = new Stack<Integer>();
+	Node current = head;
+	while(current != null){
+		stack.push(current.data);
+		current = current.next;
+	}
+	current = head;
+	while(current != null){
+		if(stack.pop() != current.data) return false;
+	}
+	return true;
+}
+Note: Solution #2 reverses the list from the middle and compare the two lists
+boolean isPalindrome(Node head){
+	Node current = head;
+	int len = 0;
+	while(current != null){
+		current = current.next;
+		len++;
+	}
+	current = head;
+	int n = len/2, i = 0;
+	while(i++ <= n) current = current.next;
+	
+	//now reverse it
+	Node previous = null, next;
+	while(current !+ null){
+		next = current.next;
+		current.next = previous;
+		previous = current;
+		current = next;
+	}
+	Node first = head, second = previous;
+	
+	while(first != null && second != null){
+		if(first.data != second.data) return false;
+		first = first.next;
+		second = second.next;
+	}
+	return true;
+}
+[/PALINDROME]
+
+
 
 
