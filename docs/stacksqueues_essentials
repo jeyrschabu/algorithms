@@ -29,6 +29,33 @@ class Stack{
 }
 
 Implimentation #2: Using a linkedlist
+
+class Stack{
+	int n;
+	Node first;
+	
+	class Node{
+		int data;
+		Node next;
+		public Node(int d, Node t){
+			data = d;
+			next = t;
+		}
+	}
+	
+	boolean isEmpty(){
+		return first == null;
+	}
+	int size(){
+		return n;
+	}
+	void push(int data){
+		Node current = first;
+		first = new Node(data);
+	}
+	
+
+}
 SUMMARY:
 	1. 	void add(Node head, int data)
 	
