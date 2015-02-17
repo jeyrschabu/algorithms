@@ -1,4 +1,4 @@
-LinkedList Data Structures and Algorithms
+LinkedList
 
 SUMMARY:
 	1. 	void add(Node head, int data)
@@ -25,6 +25,8 @@ class Node{
 		this.next = null;
 	}
 }
+
+
 [ADD]
 //iterative
 void add(Node head, int data){
@@ -45,6 +47,14 @@ void add(Node head, int data){
 		return;
 	}
 	add(current.next, data);
+}
+
+//add first
+void addFirst(int data, Node head){
+	Node current = new Node(data);
+	current.next = head;
+	//update the head
+	head = current;
 }
 [/ADD]
 
@@ -99,6 +109,8 @@ boolean remove(Node head, Node previous, int data){
 	}
 	return remove(current, current.next, data);
 }
+
+//remove First
 [/REMOVE]
 
 [REVERSE]
