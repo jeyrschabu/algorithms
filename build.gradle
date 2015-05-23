@@ -1,20 +1,33 @@
 apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'groovy'
 
 group = 'com.jeyrs.algorithms'
 version = '1.0.0-SNAPSHOT'
 
-description = """algorithms"""
+description = 'algorithms'
 
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
+apply from : "${project.projectDir}/gradle/dependencies.gradle"
 
+buildscript {
+	repositories {
+		jcenter()
+    	
+    	maven {
+    		name	'JFrog OSS snapshot repo'
+    		url		'https://oss.jfrog.org/oss-snapshot-local/'
+    	}
+	}
+}
 
 repositories {
-        
-     maven { url "http://repo.maven.apache.org/maven2" }
+    mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
 }
-dependencies {
-    compile group: 'junit', name: 'junit', version:'4.11'
-}
+
+
