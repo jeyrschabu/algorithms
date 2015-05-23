@@ -10,12 +10,17 @@ Implimentation #1: Using an Array
 
 //stack of Integers
 
+
 class Stack{
+
 	int [] s;
+	
 	int top = -1;
+	
 	public Stack(int max){
 		s = new Int[max];
 	}
+	
 	boolean isEmpty(){
 		return top < 0;
 	}
@@ -26,6 +31,7 @@ class Stack{
 	void pop(){
 		return s[top--];
 	}
+	
 }
 
 Implimentation #2: Using a linkedlist

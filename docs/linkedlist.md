@@ -1,23 +1,23 @@
 LinkedList
+==========
 
-SUMMARY:
-	1. 	void add(Node head, int data)
-	2. 	boolean search(Node head, int data)
-	3. 	boolean remove(Node head, Node previous, int data)
-	4. 	Node reverse(Node node)
-	5. 	Node printNthToLast(Node head, int n)
-	6. 	Node reverseNthNodeFromLast(Node head, int n)
-	7. 	Node mergeSortedList(Node l1, Node l2)
-	8. 	Node removeDups(Node head)
-	9. 	boolean removeRestricted(Node node, int data)
-	10. Node partitionList(Node head, int data)
-	11. Node sumTwoLists(Node first, Node last)
-	12. boolean hasCycle(Node head)
-	13. Node firstNodeInLoop(Node head)
-	14. boolean isPalindrome(Node head)
-	
-	
+- void add(Node head, int data)
+- boolean search(Node head, int data)
+- boolean remove(Node head, Node previous, int data)
+- Node reverse(Node node)
+- Node printNthToLast(Node head, int n)
+- Node reverseNthNodeFromLast(Node head, int n)
+- Node mergeSortedList(Node l1, Node l2)
+- Node removeDups(Node head)
+- boolean removeRestricted(Node node, int data)
+- Node partitionList(Node head, int data)
+- Node sumTwoLists(Node first, Node last)
+- boolean hasCycle(Node head)
+- Node firstNodeInLoop(Node head)
+- boolean isPalindrome(Node head)
+
 class Node{
+
 	int data;
 	Node next;
 	public Node(int data){
@@ -26,10 +26,11 @@ class Node{
 	}
 }
 
-
 [ADD]
-//iterative
+
+- iterative
 void add(Node head, int data){
+
 	Node current = head;
 	if(current == null) {
 		current = new Node(data, null);
@@ -38,8 +39,11 @@ void add(Node head, int data){
 	while(current.next != null) current = current.next;
 	current.next = new Node(data, null);
 }
-//recursive
+
+- recursive
+
 void add(Node head, int data){
+
 	Node current = head;
 	if(current == null) {
 		current = new Node(data);

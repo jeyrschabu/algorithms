@@ -1,4 +1,4 @@
 algorithms
 ==========
 
-algorithm sample codes and problems
+Ideas, code samples & misc.
